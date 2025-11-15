@@ -13,6 +13,20 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> {
+  // add shoe to cart
+  void addShoeToCart(Shoe shoe) {
+    Provider.of<Cart>(context, listen: false).addItemToCart(shoe);
+
+    // alert the user, she successfully added
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("Successfully added!"),
+        content: Text("Check your cart"),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<Cart>(
@@ -76,7 +90,9 @@ class _ShopPageState extends State<ShopPage> {
             ),
           ),
 
-          const SizedBox(height: 10,),
+          const SizedBox(
+            height: 10,
+          ),
 
           Expanded(
             child: ListView.builder(
@@ -86,19 +102,20 @@ class _ShopPageState extends State<ShopPage> {
                 Shoe shoe = value.getShoeList()[index];
                 return ShoeTile(
                   shoe: shoe,
+                  onTap: () => addShoeToCart(shoe),
                 );
               },
             ),
           ),
 
           Padding(
-            padding: const EdgeInsets.only(left: 25.0, right: 25, top: 25, bottom: 25),
+            padding: const EdgeInsets.only(
+                left: 25.0, right: 25, top: 25, bottom: 25),
             child: Divider(
               // color: Colors.grey[300], // same color as background
               color: Colors.grey,
             ),
           )
-
         ],
       ),
     );
