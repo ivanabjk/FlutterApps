@@ -1,3 +1,3 @@
-#Apps created in Flutter
+# Apps created in Flutter
 
-##Followed [Mitch Koko's](https://www.youtube.com/@createdbykoko) tutorials on YouTube. 
+## Followed [Mitch Koko's](https://www.youtube.com/@createdbykoko) tutorials on YouTube. 
